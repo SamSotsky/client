@@ -10,15 +10,16 @@ import {useNavigate} from "react-router-dom"
 const CreateProd = () => {
     const [title, setTitle] = useState("")
     const [price, setPrice] = useState("")
-    const [description, setDescription] = useState(3)
+    const [description, setDescription] = useState("")
     const navigate = useNavigate()
 
     const handleSubmit=(e) =>{
         e.preventDefault()
         axios.post(`http://localhost:8000/api/prods`, {title, price, description})
-            .then(response=>navigate(`/prods`))
+            .then(response=>navigate(`/`))
             .catch(err=>console.log(err.response.data))
     }
+    
 
     return (
         <div>

@@ -4,7 +4,7 @@ import DisplayTable from '../components/DisplayTable'
 import axios from "axios"
 
 const DisplayProd = () => {
-    const [prods, setProds] = useState([])
+    const [prods, setProds] = useState()
 
     // grabs products from DisplayForm
     useEffect(()=>{
@@ -15,14 +15,16 @@ const DisplayProd = () => {
         .catch(err=>console.log(err))
     },[])
 
-    
+    const removeFromDom = prodId=> {
+        setProds(prods.filter(prod=>prod._id!==prodId))
+    }
 
 
     return (
         <div>
             <h1>DisplayProd</h1>
             <CreateProd />
-            <DisplayTable prods={prods} />
+            {prods&& <DisplayTable prods={prods} removeFromDom={removeFromDom} />}
 
         </div>
     )
