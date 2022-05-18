@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import CreateForm from '../components/CreateForm'
-import DisplayForm from '../components/DisplayForm'
+import CreateProd from '../components/CreateProd'
+import DisplayTable from '../components/DisplayTable'
 import axios from "axios"
 
 const DisplayProd = () => {
     const [prods, setProds] = useState([])
 
-    // grabs songs from DisplayForm
+    // grabs products from DisplayForm
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/prods`)
         .then( response=>{
@@ -21,8 +21,8 @@ const DisplayProd = () => {
     return (
         <div>
             <h1>DisplayProd</h1>
-            <CreateForm />
-            <DisplayForm prods={prods} />
+            <CreateProd />
+            <DisplayTable prods={prods} />
 
         </div>
     )
